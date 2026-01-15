@@ -1,6 +1,6 @@
 package br.com.kaue;
 import totalcross.ui.MainWindow;
-import totalcross.ui.Label;
+import br.com.kaue.view.LoginView;
 import totalcross.sys.Settings;
 public class manager extends MainWindow {
     
@@ -10,7 +10,7 @@ public class manager extends MainWindow {
 
     @Override
     public void initUI() {
-        Label helloWord = new Label("Hello World!");
-        add(helloWord, CENTER, CENTER);
+        LoginView login = new LoginView();
+        add(login, LEFT, TOP, PARENTSIZE, PARENTSIZE);
     }
 }
