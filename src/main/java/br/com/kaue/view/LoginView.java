@@ -4,14 +4,15 @@ import totalcross.ui.Button;
 import totalcross.ui.Container;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
+import totalcross.ui.MainWindow;
 import totalcross.ui.Toast;
 import totalcross.ui.gfx.Color;
 
 public class LoginView extends Container {
-    Label mainLabel = new Label("Login");
-    Edit userName = new Edit();
-    Edit password = new Edit();
-    Button loginButton = new Button("Logar");
+    private Label mainLabel = new Label("Login");
+    private Edit userName = new Edit();
+    private Edit password = new Edit();
+    private Button loginButton = new Button("Logar");
 
     @Override
     public void initUI() {
@@ -29,7 +30,11 @@ public class LoginView extends Container {
         add(loginButton, CENTER, AFTER + 80);
 
         loginButton.addPressListener(event -> {
-            Toast.show(userName.getText(), 2000);
+            if(userName.getText().equals("admin") && password.getText().equals("123")) {
+                MainWindow.getMainWindow().swap(new DashboardView());
+            } else {
+                Toast.show("Usuário ou senha inválidos", 1000);
+            }
         });
 
     }
